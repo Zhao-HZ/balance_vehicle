@@ -1,0 +1,17 @@
+../Drivers/CMSIS/Include/core_cm3.h:1762:34:__NVIC_SystemReset	1
+../Hardware/MPU6050/MPU6050.c:31:24:inv_row_2_scale	7
+../Hardware/MPU6050/MPU6050.c:53:24:inv_orientation_matrix_to_scalar	1
+../Hardware/MPU6050/MPU6050.c:65:13:run_self_test	2
+../Hardware/MPU6050/MPU6050.c:108:7:MPU6050_newValues	8
+../Hardware/MPU6050/MPU6050.c:182:6:MPU6050_setClockSource	1
+../Hardware/MPU6050/MPU6050.c:195:6:MPU6050_setFullScaleGyroRange	1
+../Hardware/MPU6050/MPU6050.c:211:6:MPU6050_setFullScaleAccelRange	1
+../Hardware/MPU6050/MPU6050.c:223:6:MPU6050_setSleepEnabled	1
+../Hardware/MPU6050/MPU6050.c:235:9:MPU6050_getDeviceID	1
+../Hardware/MPU6050/MPU6050.c:249:9:MPU6050_testConnection	2
+../Hardware/MPU6050/MPU6050.c:263:6:MPU6050_setI2CMasterModeEnabled	1
+../Hardware/MPU6050/MPU6050.c:275:6:MPU6050_setI2CBypassEnabled	1
+../Hardware/MPU6050/MPU6050.c:287:6:MPU6050_initialize	1
+../Hardware/MPU6050/MPU6050.c:304:6:DMP_Init	10
+../Hardware/MPU6050/MPU6050.c:345:6:Read_DMP	2
+../Hardware/MPU6050/MPU6050.c:372:5:Read_Temperature	2

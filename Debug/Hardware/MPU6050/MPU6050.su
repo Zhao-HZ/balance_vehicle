@@ -1,0 +1,17 @@
+../Drivers/CMSIS/Include/core_cm3.h:1762:34:__NVIC_SystemReset	4	static,ignoring_inline_asm
+../Hardware/MPU6050/MPU6050.c:31:24:inv_row_2_scale	24	static
+../Hardware/MPU6050/MPU6050.c:53:24:inv_orientation_matrix_to_scalar	24	static
+../Hardware/MPU6050/MPU6050.c:65:13:run_self_test	48	static
+../Hardware/MPU6050/MPU6050.c:108:7:MPU6050_newValues	24	static
+../Hardware/MPU6050/MPU6050.c:182:6:MPU6050_setClockSource	24	static
+../Hardware/MPU6050/MPU6050.c:195:6:MPU6050_setFullScaleGyroRange	24	static
+../Hardware/MPU6050/MPU6050.c:211:6:MPU6050_setFullScaleAccelRange	24	static
+../Hardware/MPU6050/MPU6050.c:223:6:MPU6050_setSleepEnabled	16	static
+../Hardware/MPU6050/MPU6050.c:235:9:MPU6050_getDeviceID	8	static
+../Hardware/MPU6050/MPU6050.c:249:9:MPU6050_testConnection	8	static
+../Hardware/MPU6050/MPU6050.c:263:6:MPU6050_setI2CMasterModeEnabled	16	static
+../Hardware/MPU6050/MPU6050.c:275:6:MPU6050_setI2CBypassEnabled	16	static
+../Hardware/MPU6050/MPU6050.c:287:6:MPU6050_initialize	8	static
+../Hardware/MPU6050/MPU6050.c:304:6:DMP_Init	16	static
+../Hardware/MPU6050/MPU6050.c:345:6:Read_DMP	56	static
+../Hardware/MPU6050/MPU6050.c:372:5:Read_Temperature	24	static

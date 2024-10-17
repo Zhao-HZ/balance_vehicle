@@ -1,0 +1,6 @@
+../Core/Src/control.c:15:6:HAL_TIM_PeriodElapsedCallback	32	static
+../Core/Src/control.c:28:6:get_angle	64	static
+../Core/Src/control.c:60:6:get_encoder	16	static
+../Core/Src/control.c:72:6:set_PWM	16	static
+../Core/Src/control.c:93:5:my_abs	16	static
+../Core/Src/control.c:97:5:PWM_limit	32	static

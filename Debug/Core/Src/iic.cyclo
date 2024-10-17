@@ -1,0 +1,16 @@
+../Core/Src/iic.c:16:5:IIC_Start	3
+../Core/Src/iic.c:38:6:IIC_Stop	1
+../Core/Src/iic.c:57:5:IIC_Wait_Ack	3
+../Core/Src/iic.c:87:6:IIC_Ack	1
+../Core/Src/iic.c:106:6:IIC_NAck	1
+../Core/Src/iic.c:124:6:IIC_Send_Byte	3
+../Core/Src/iic.c:150:5:i2cWrite	5
+../Core/Src/iic.c:181:5:i2cRead	5
+../Core/Src/iic.c:215:4:IIC_Read_Byte	4
+../Core/Src/iic.c:243:15:I2C_ReadOneByte	1
+../Core/Src/iic.c:273:4:IICreadBytes	3
+../Core/Src/iic.c:303:4:IICwriteBytes	2
+../Core/Src/iic.c:328:4:IICreadByte	1
+../Core/Src/iic.c:341:15:IICwriteByte	1
+../Core/Src/iic.c:355:4:IICwriteBits	2
+../Core/Src/iic.c:382:4:IICwriteBit	2
