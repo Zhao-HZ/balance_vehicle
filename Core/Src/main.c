@@ -70,7 +70,8 @@ PUTCHAR_PROTOTYPE
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+extern float pitch, roll;
+extern float motor_left, motor_right;
 /* USER CODE END 0 */
 
 /**
@@ -123,6 +124,7 @@ int main(void)
   {
 //    printf("Hello\n");
 	  // HAL_UART_Transmit(&huart1, "Hello\n", 6, 0xFFFF);
+    printf("pitch, roll: %f, %f\n", pitch, roll);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

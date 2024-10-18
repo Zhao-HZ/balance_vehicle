@@ -20,5 +20,8 @@ void get_encoder(int* encoder_left, int* encoder_right);
 int my_abs(int x);
 void set_PWM(int PWM_left, int PWM_right);
 int PWM_limit(int IN, int max, int min);
+int balance(float angle, float gyro);
+int velocity(int encoder_left, int encoder_right);
+int turn(float gyro);
 
 #endif /* INC_CONTROL_H_ */

@@ -2,25 +2,37 @@
 #include "MPU6050.h"
 #include "KF.h"
 #include "tim.h"
-// #include "stm32f1xx_hal_tim.h"
-// #include "stm32f103xb.h"
 #include "stdio.h"
 
 #define PI 3.14159265
 
-float gyro_balance;
+float gyro_balance, angle_balance, gyro_balance, gyro_turn;
+int middle_angle;
 float pitch, roll, yaw;
 int encoder_left, encoder_right;
+float acceleration_Z;
+float motor_left, motor_right;
+float balance_Kp = 20, balance_Kd = 1.35, velocity_Kp = 10, velocity_Ki = 0.8, turn_Kp = 42, turn_Kd = 0.6;
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+    int balance_PWM, Velocity_PWM, turn_PWM;
     if (htim == &htim2) {
         get_angle();
         get_encoder(&encoder_left, &encoder_right);
         encoder_left = -encoder_left;
         encoder_right = -encoder_right;
-        printf("Pitch, Roll: %f, %f\n", pitch, roll);
-        set_PWM(4000, 4000);
+        balance_PWM = balance(angle_balance, gyro_balance);
+        Velocity_PWM = velocity(encoder_left, encoder_right);
+        turn_PWM = turn(gyro_turn);
+        motor_left = balance_PWM + Velocity_PWM + turn_PWM;
+        motor_right = balance_PWM + Velocity_PWM - turn_PWM;
+        motor_left = PWM_limit(motor_left, 6900, -6900);
+        motor_right = PWM_limit(motor_right, 6900, -6900);
+        set_PWM(motor_left, motor_right);
+
+        // printf("pitch, roll: %f, %f\n", pitch, roll);
         // printf("Encoder Left, Right: %d, %d\n", encoder_left, encoder_right);
+        // set_PWM(4000, 4000);
 
     }
 }
@@ -55,6 +67,9 @@ void get_angle()
     gyro_y = Gyro_Y / 939.8;
     pitch = KF_X(accel_y, accel_z, -gyro_x) / PI * 180;
     roll = KF_X(accel_x, accel_z, gyro_y) / PI * 180;
+    angle_balance = pitch;
+    gyro_turn = Gyro_Z;
+    acceleration_Z = Accel_Z;
 }
 
 void get_encoder(int* encoder_left, int* encoder_right) {
@@ -102,4 +117,33 @@ int PWM_limit(int IN, int max, int min) {
         OUT = min;
     }
     return OUT;
+}
+
+int balance(float angle, float gyro) {
+    float angle_bias, gyro_bias;
+    int balance;
+    angle_bias = middle_angle - angle;
+    gyro_bias = 0 - gyro;
+    balance = -balance_Kp * angle_bias - balance_Kd * gyro_bias;
+    return balance;
+}
+
+int velocity(int encoder_left, int encoder_right) {
+    static float velocity, encoder_least, encoder_bias, movement;
+    static float encoder_integral, target_velocity;
+    encoder_least = 0 - (encoder_left + encoder_right);
+    encoder_bias *= 0.86;
+    encoder_bias += encoder_least * 0.14;
+    encoder_integral += encoder_bias;
+    if (encoder_integral > 10000) encoder_integral = 10000;
+    if (encoder_integral < -10000) encoder_integral = -10000;
+    velocity = -encoder_bias * velocity_Kp - encoder_integral * velocity_Ki;
+    return velocity;
+}
+
+int turn(float gyro) {
+    static float turn_target, turn, turn_amplitude = 54;
+    float Kp = turn_Kp, Kd;
+    turn = turn_target * Kp + gyro * Kd;
+    return turn;
 }
